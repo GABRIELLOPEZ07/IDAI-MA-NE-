@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Estudiantes</title>
+  <link rel="stylesheet" href="archivos/fontawesome/css/all.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 80%;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    thead th {
+      background-color: #17a2b8;
+      color: white;
+    }
+    tbody td:first-child {
+      background-color: #17a2b8;
+      color: white;
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+    tbody tr:hover {
+      background-color: #e0f7ff;
+    }
+    .acciones i {
+      margin: 0 5px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .fa-info-circle {
+      color: #007bff;
+    }
+    .fa-edit {
+      color: #28a745;
+    }
+    .fa-trash-alt {
+      color: #dc3545;
+    }
+    .acciones i:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lista de Estudiantes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo Electrónico</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>Ana García</td>
+        <td>ana.garcia@example.com</td>
+        <td class="acciones">
+          <i class="fas fa-info-circle"></i>
+          <i class="fas fa-edit"></i>
+          <i class="fas fa-trash-alt"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>Carlos López</td>
+        <td>carlos.lopez@example.com</td>
+        <td class="acciones">
+          <i class="fas fa-info-circle"></i>
+          <i class="fas fa-edit"></i>
+          <i class="fas fa-trash-alt"></i>
+        </td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>María Torres</td>
+        <td>maria.torres@example.com</td>
+        <td class="acciones">
+          <i class="fas fa-info-circle"></i>
+          <i class="fas fa-edit"></i>
+          <i class="fas fa-trash-alt"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
