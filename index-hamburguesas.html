@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Pedido Negocio de Hamburguesas</title>
+<script>
+function envdat() {
+  const form = document.forms["NegHam"];
+  let precioHamb = 0;
+  let precioCarne = 0;
+  let precioIngredientes = 0;
+  let cantidad = parseInt(form.canham.value);
+
+  if (isNaN(cantidad) || cantidad < 1) {
+    alert("Ingrese una cantidad válida (número mayor que 0).");
+    form.canham.value = 1;
+    cantidad = 1;
+  }
+
+  // Precio hamburguesa
+  const tipham = form.tipham;
+  for (let i = 0; i < tipham.length; i++) {
+    if (tipham[i].checked) {
+      switch (tipham[i].value) {
+        case "sencilla": precioHamb = 35; break;
+        case "especial": precioHamb = 45; break;
+        case "doble": precioHamb = 60; break;
+        case "suprema": precioHamb = 90; break;
+        case "light": precioHamb = 50; break; // si quieres Light agregarlo
+      }
+      break;
+    }
+  }
+
+  // Precio carne
+  const tipcar = form.tipcar;
+  for (let i = 0; i < tipcar.length; i++) {
+    if (tipcar[i].checked) {
+      switch (tipcar[i].value) {
+        case "tradicional": precioCarne = 0; break;
+        case "angus": precioCarne = 15; break;
+        case "pollo": precioCarne = 5; break;
+        case "roastbeef": precioCarne = 10; break;
+      }
+      break;
+    }
+  }
+
+  // Ingredientes (solo si hamburguesa sencilla o especial)
+  const ingNames = ["Ingham1","Ingham2","Ingham3","Ingham4","Ingham5","Ingham6","Ingham7","Ingham8"];
+  const ingPrecios = [0,5,3,5,5,3,3,2];
+
+  // Solo contar ingredientes si hamburguesa es sencilla o especial
+  const hamSeleccionada = [...tipham].find(radio => radio.checked)?.value;
+  if (hamSeleccionada === "sencilla" || hamSeleccionada === "especial") {
+    for (let i = 0; i < ingNames.length; i++) {
+      if (form[ingNames[i]].checked) {
+        precioIngredientes += ingPrecios[i];
+      }
+    }
+  }
+
+  // Cálculo subtotal
+  let subtotal = (precioHamb + precioCarne + precioIngredientes) * cantidad;
+
+  // Servicio/consumo
+  let valorServicio = form.tipcon.value;
+  valorServicio = parseFloat(valorServicio);
+  let total;
+
+  if (valorServicio === 0) {
+    total = subtotal;
+  } else if (valorServicio === 40) {
+    total = subtotal + 40;
+  } else if (valorServicio === 0.15) {
+    total = subtotal * 1.15;
+  } else if (valorServicio === 0.25) {
+    total = subtotal * 1.25;
+  } else {
+    total = subtotal;
+  }
+
+  form.totpag.value = total.toFixed(2);
+}
+
+function imptic() {
+  alert("TICKET IMPRESO CON ÉXITO!!");
+}
+</script>
+</head>
+<body bgcolor="orange">
+<center>
+<br>
+<hr color="black" size="5">
+<h1> HAMBURGUESAS </h1>
+<hr color="black" size="5">
+
+<form name="NegHam">
+<table width="85%" border="1">
+<tr>
+<td width="33%">
+<h3> TIPO DE HAMBURGUESA </h3>
+<hr>
+<label><input type="radio" name="tipham" value="sencilla" onclick="envdat();" required> Sencilla $35.00</label><br>
+<label><input type="radio" name="tipham" value="especial" onclick="envdat();"> Especial $45.00</label><br>
+<label><input type="radio" name="tipham" value="doble" onclick="envdat();"> Doble $60.00</label><br>
+<label><input type="radio" name="tipham" value="suprema" onclick="envdat();"> Suprema $90.00</label><br>
+<label><input type="radio" name="tipham" value="light" onclick="envdat();"> Light $50.00</label><br>
+
+<h3> TIPO DE CARNE </h3>
+<hr>
+<label><input type="radio" name="tipcar" value="tradicional" onclick="envdat();" required> Tradicional +$0.00</label><br>
+<label><input type="radio" name="tipcar" value="angus" onclick="envdat();"> Angus +$15.00</label><br>
+<label><input type="radio" name="tipcar" value="pollo" onclick="envdat();"> Pollo +$5.00</label><br>
+<label><input type="radio" name="tipcar" value="roastbeef" onclick="envdat();"> Roast Beef +$10.00</label><br>
+</td>
+
+<td width="33%">
+<h3> INGREDIENTES (Solo para Sencilla y Especial) </h3>
+<hr>
+<label><input type="checkbox" name="Ingham1" onclick="envdat();"> Tomate y Cebolla +$0.00</label><br>
+<label><input type="checkbox" name="Ingham2" onclick="envdat();"> Aguacate +$5.00</label><br>
+<label><input type="checkbox" name="Ingham3" onclick="envdat();"> Tocino +$3.00</label><br>
+<label><input type="checkbox" name="Ingham4" onclick="envdat();"> Salchicha Asadera +$5.00</label><br>
+<label><input type="checkbox" name="Ingham5" onclick="envdat();"> Carne Trompo +$5.00</label><br>
+<label><input type="checkbox" name="Ingham6" onclick="envdat();"> Piña +$3.00</label><br>
+<label><input type="checkbox" name="Ingham7" onclick="envdat();"> Peperoni +$3.00</label><br>
+<label><input type="checkbox" name="Ingham8" onclick="envdat();"> Champiñones +$2.00</label><br>
+</td>
+
+<td width="33%">
+<h3> NUMERO DE HAMBURGUESAS </h3>
+<hr>
+Cantidad de Hamburguesas: <input type="text" name="canham" size="2" onchange="envdat();" value="1" pattern="\d+" title="Ingrese un número válido" required>
+
+<h3> DATOS DEL CLIENTE </h3>
+<hr>
+Nombre: <input type="text" name="nomcli" size="15" required> <br>
+Dirección: <input type="text" name="dircli" size="18"> <br>
+Teléfono: <input type="text" name="telcli" size="10"> <br>
+
+<h3> TIPO DE SERVICIO/CONSUMO </h3>
+<hr>
+<select name="tipcon" onchange="envdat();" required>
+<option value="0">Para llevar +$0.00</option>
+<option value="0.15">Comer aquí +15%</option>
+<option value="40">Entrega a Domicilio +$40.00</option>
+<option value="0.25">Plataforma Digital +25%</option>
+</select>
+</td>
+</tr>
+</table>
+<br>
+TOTAL A PAGAR: <input type="text" name="totpag" value="0.00" readonly>
+<br><br>
+<input type="button" value="IMPRIMIR TICKET" onclick="imptic();">
+</form>
+
+</center>
+</body>
+</html>
