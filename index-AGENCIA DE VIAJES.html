@@ -1,19 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>World Travel Agency</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .encabezado img {
+      height: 100px;
+    }
+
+    .slogan {
+      color: blue;
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      padding: 10px;
+    }
+
+    .franja {
+      background-color: green;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td {
+      padding: 5px;
+      vertical-align: top;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select {
+      width: 120px;
+    }
+
+    .titulo {
+      color: blue;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .recuadro {
+      border: 2px solid black;
+      margin: 10px;
+    }
+
+    .boton {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: #007f00;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .boton:hover {
+      background-color: #005f00;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .cliente {
+      border: 1px solid rgba(130, 121, 121, 0.019);
+      padding: 5px;
+    }
+
+    .cliente input {
+      margin-right: 20px;
+    }
+
+    .form-section {
+      border: 1px solid #999;
+    }
+
+    .subsection {
+      padding: 10px;
+    }
+
+  </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <h1>
-                WORLD TRAVEL AGENCY
-            </h1>
-        </tr>
-   </table>
-    
-    
+
+  
+  <table>
+    <tr>
+      <td><img src="AGE.jpg" alt="Panorámica"></td>
+      <td width="100%"><img src="WOR.png" alt="Logo"></td>
+    </tr>
+  </table>
+
+ <div class="slogan">... tu pase al mundo de tus sueños</div>
+
+  
+  <div class="franja">Estados Unidos, Francia, China, Suramérica...</div>
+
+  
+  <table class="cliente">
+    <tr>
+      <td><label for="nombre">NOMBRE:</label></td>
+      <td><input type="text" id="nombre"></td>
+      <td><label for="direccion">DIRECCIÓN:</label></td>
+      <td><input type="text" id="direccion"></td>
+      <td><label for="telefono">TELÉFONO:</label></td>
+      <td><input type="text" id="telefono"></td>
+      <td><label for="email">EMAIL:</label></td>
+      <td><input type="email" id="email"></td>
+    </tr>
+  </table>
+
+  
+  <table class="recuadro">
+    <tr>
+     
+      <td class="form-section">
+        <div class="subsection">
+          <div class="titulo">COTIZACION INDIVIDUAL</div>
+          <hr>
+          <p>
+            <input type="radio" name="vuelo"> Sin Avión <br>
+            <input type="radio" name="vuelo"> Avión de IDA <br>
+            <input type="radio" name="vuelo"> Avión de IDA y VUELTA
+          </p>
+          <hr>
+
+          <p>
+            <input type="radio" name="hotel"> Sin Hotel <br>
+            <input type="radio" name="hotel"> Habitación Sencilla <br>
+            <input type="radio" name="hotel"> Habitación Doble
+          </p>
+          <hr>
+
+          <p>
+            Número de Adultos:
+            <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </p>
+
+
+          <p>
+            Número de Menores de Edad:
+            <select>
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </p>
+
+          <p>
+            Número de días: <input type="number" min="1">
+          </p>
+
+          <button class="boton">Cotización Individual</button>
+        </div>
+      </td>
+
+      
+      <td class="form-section">
+        <div class="subsection">
+          <div class="titulo">PAQUETES</div>
+          <hr>
+          <p>
+            <input type="radio" name="paquete"> SurAmérica Colorida <br>
+            <input type="radio" name="paquete"> Europa de Ensueño <br>
+            <input type="radio" name="paquete"> África Salvaje <br>
+            <input type="radio" name="paquete"> Asia de Tradiciones <br>
+            <input type="radio" name="paquete"> Norteamérica Moderna
+          </p>
+          <hr>
+
+          <p>
+            Número de días: <input type="number" min="1">
+          </p>
+
+          <p>
+            <input type="radio" name="crucero"> Crucero Romántico (7 días)
+          </p>
+
+          <p><strong>Extras:</strong><br>
+            <input type="checkbox" name="extra"> Bebidas Alcohólicas <br>
+            <input type="checkbox" name="extra"> Clases de Buceo <br>
+            <input type="checkbox" name="extra"> Tour de Expedición <br>
+            <input type="checkbox" name="extra"> Paquete de Fotografías <br>
+            <input type="checkbox" name="extra"> Pesca en Altamar
+          </p>
+
+          <button class="boton">Cotización Paquetes</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+ 
+  <footer>
+    TU NOMBRE: GABROEL LOPEZ B.<br>
+    MATRÍCULA: 45464<br>
+    WEB PAGE
+  </footer>
+
 </body>
 </html>
